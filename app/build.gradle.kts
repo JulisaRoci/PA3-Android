@@ -50,27 +50,20 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
-    // --- ICONOS EXTENDIDOS DE MATERIAL DESIGN ---
     implementation(libs.compose.material.icons.extended)
 
-    // --- NAVEGACIÓN ---
     implementation(libs.navigation.compose)
 
-    // --- CICLO DE VIDA Y VIEWMODEL ---
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.lifecycle.runtime.compose)
 
-    // --- RETROFIT & CONEXIÓN A LA API ---
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.okhttp.logging.interceptor)
 
-    // --- ALMACENAMIENTO DE TOKENS (DATASTORE) ---
     implementation(libs.datastore.preferences)
 
-    // --- CORRUTINAS ---
     implementation(libs.kotlinx.coroutines.android)
 
-    //--- SPLASH SCREEN---
     implementation("androidx.core:core-splashscreen:1.0.1")
 }
