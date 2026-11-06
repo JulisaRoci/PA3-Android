@@ -1,4 +1,4 @@
-package com.isil.android.pa3.presentation.screens.cursos
+package com.isil.android.pa3.presentation.screens.entidad
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.MenuBook
+import androidx.compose.material.icons.rounded.Inventory2
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,7 +22,7 @@ import com.isil.android.pa3.presentation.components.LargeTitle
 import com.isil.android.pa3.ui.theme.IOSColors
 
 @Composable
-fun CursosScreen() {
+fun EntidadScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -30,7 +30,7 @@ fun CursosScreen() {
             .padding(horizontal = 20.dp)
     ) {
         Spacer(Modifier.height(16.dp))
-        LargeTitle(title = "Cursos", subtitle = "Entidad de datos")
+        LargeTitle(title = "Datos", subtitle = "Entidad de datos")
         Spacer(Modifier.height(20.dp))
 
         GlassCard(modifier = Modifier.fillMaxWidth()) {
@@ -38,16 +38,16 @@ fun CursosScreen() {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                IOSIconBadge(Icons.AutoMirrored.Rounded.MenuBook, IOSColors.Indigo, size = 64.dp)
+                IOSIconBadge(Icons.Rounded.Inventory2, IOSColors.Indigo, size = 64.dp)
                 Spacer(Modifier.height(16.dp))
                 Text(
-                    "Módulo de cursos",
+                    "Entidad de datos",
                     style = MaterialTheme.typography.titleLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    "Aquí podrás registrar, consultar, editar y eliminar los cursos.",
+                    "Módulo en desarrollo.",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.Center

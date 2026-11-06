@@ -88,7 +88,7 @@ fun HomeScreen(viewModel: HomeViewModel = viewModel(factory = AppViewModelProvid
                         color = MaterialTheme.colorScheme.onSurface
                     )
                     Text(
-                        "Sesión iniciada como @${session?.username.orEmpty()}",
+                        "@${session?.username.orEmpty()} · ${session?.role.orEmpty()}",
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -112,7 +112,7 @@ fun HomeScreen(viewModel: HomeViewModel = viewModel(factory = AppViewModelProvid
             }
             Spacer(Modifier.height(6.dp))
             Text(
-                "Generado por la API al iniciar sesión y guardado con TokenManager.",
+                "Generado al iniciar sesión y guardado con TokenManager.",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

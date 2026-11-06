@@ -7,8 +7,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.MenuBook
-import androidx.compose.material.icons.automirrored.rounded.MenuBook
+import androidx.compose.material.icons.outlined.Inventory2
+import androidx.compose.material.icons.rounded.Inventory2
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.rounded.Home
@@ -28,12 +28,12 @@ import com.isil.android.pa3.presentation.components.GlassTabBar
 import com.isil.android.pa3.presentation.components.LiquidBackground
 import com.isil.android.pa3.presentation.navigation.Routes
 import com.isil.android.pa3.presentation.screens.ajustes.AjustesScreen
-import com.isil.android.pa3.presentation.screens.cursos.CursosScreen
+import com.isil.android.pa3.presentation.screens.entidad.EntidadScreen
 import com.isil.android.pa3.presentation.screens.home.HomeScreen
 
 private val tabs = listOf(
     GlassTab(Routes.HOME, "Inicio", Icons.Outlined.Home, Icons.Rounded.Home),
-    GlassTab(Routes.CURSOS, "Cursos", Icons.AutoMirrored.Outlined.MenuBook, Icons.AutoMirrored.Rounded.MenuBook),
+    GlassTab(Routes.ENTIDAD, "Datos", Icons.Outlined.Inventory2, Icons.Rounded.Inventory2),
     GlassTab(Routes.AJUSTES, "Ajustes", Icons.Outlined.Settings, Icons.Rounded.Settings)
 )
 
@@ -52,7 +52,7 @@ fun MainScreen(onLogout: () -> Unit) {
             exitTransition = { fadeOut() }
         ) {
             composable(Routes.HOME) { HomeScreen() }
-            composable(Routes.CURSOS) { CursosScreen() }
+            composable(Routes.ENTIDAD) { EntidadScreen() }
             composable(Routes.AJUSTES) { AjustesScreen(onLogout = onLogout) }
         }
 

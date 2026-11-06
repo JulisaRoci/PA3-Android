@@ -21,6 +21,7 @@ class TokenManager(private val context: Context) {
         val KEY_USERNAME = stringPreferencesKey("username")
         val KEY_FULL_NAME = stringPreferencesKey("full_name")
         val KEY_EMAIL = stringPreferencesKey("email")
+        val KEY_ROLE = stringPreferencesKey("role")
     }
 
     private val preferences: Flow<Preferences> = context.sessionDataStore.data
@@ -34,7 +35,8 @@ class TokenManager(private val context: Context) {
                 token = token,
                 username = prefs[KEY_USERNAME].orEmpty(),
                 fullName = prefs[KEY_FULL_NAME].orEmpty(),
-                email = prefs[KEY_EMAIL].orEmpty()
+                email = prefs[KEY_EMAIL].orEmpty(),
+                role = prefs[KEY_ROLE].orEmpty()
             )
         }
     }
@@ -45,6 +47,7 @@ class TokenManager(private val context: Context) {
             prefs[KEY_USERNAME] = session.username
             prefs[KEY_FULL_NAME] = session.fullName
             prefs[KEY_EMAIL] = session.email
+            prefs[KEY_ROLE] = session.role
         }
     }
 

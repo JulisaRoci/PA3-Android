@@ -3,40 +3,49 @@ package com.isil.android.pa3.data.model
 import com.google.gson.annotations.SerializedName
 import com.isil.android.pa3.domain.model.Session
 
-data class LoginRequest(
-    @SerializedName("username") val username: String,
-    @SerializedName("password") val password: String,
-    @SerializedName("expiresInMins") val expiresInMins: Int = 60
+data class RolDto(
+    @SerializedName("codigo") val codigo: Long?,
+    @SerializedName("nombre") val nombre: String?
 )
 
-data class LoginResponse(
-    @SerializedName("id") val id: Int?,
-    @SerializedName("username") val username: String?,
-    @SerializedName("email") val email: String?,
-    @SerializedName("firstName") val firstName: String?,
-    @SerializedName("lastName") val lastName: String?,
-    @SerializedName("image") val image: String?,
-    @SerializedName("accessToken") val accessToken: String,
-    @SerializedName("refreshToken") val refreshToken: String?
+data class EmpleadoDto(
+    @SerializedName("codigo") val codigo: Long?,
+    @SerializedName("nombre") val nombre: String?,
+    @SerializedName("apellidopaterno") val apellidoPaterno: String?,
+    @SerializedName("apellidomaterno") val apellidoMaterno: String?,
+    @SerializedName("correo") val correo: String?,
+    @SerializedName("usuario") val usuario: String?,
+    @SerializedName("clave") val clave: String?,
+    @SerializedName("estado") val estado: Boolean?,
+    @SerializedName("rol") val rol: RolDto?
 )
 
 data class StoredSession(
     val token: String,
     val username: String,
     val fullName: String,
-    val email: String
+    val email: String,
+    val role: String
 )
 
-fun LoginResponse.toStoredSession(fallbackUsername: String) = StoredSession(
-    token = accessToken,
-    username = username ?: fallbackUsername,
-    fullName = listOfNotNull(firstName, lastName).joinToString(" ").ifBlank { username ?: fallbackUsername },
-    email = email.orEmpty()
+fun EmpleadoDto.fullName(): String =
+    listOfNotNull(nombre, apellidoPaterno, apellidoMaterno)
+        .filter { it.isNotBlank() }
+        .joinToString(" ")
+        .ifBlank { usuario.orEmpty() }
+
+fun EmpleadoDto.toStoredSession(token: String) = StoredSession(
+    token = token,
+    username = usuario.orEmpty(),
+    fullName = fullName(),
+    email = correo.orEmpty(),
+    role = rol?.nombre.orEmpty()
 )
 
 fun StoredSession.toDomain() = Session(
     token = token,
     username = username,
     fullName = fullName,
-    email = email
+    email = email,
+    role = role
 )

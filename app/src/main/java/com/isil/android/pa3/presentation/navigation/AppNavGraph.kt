@@ -12,7 +12,7 @@ object Routes {
     const val MAIN = "main"
 
     const val HOME = "home"
-    const val CURSOS = "cursos"
+    const val ENTIDAD = "entidad"
     const val AJUSTES = "ajustes"
 }
 

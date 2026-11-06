@@ -1,8 +1,8 @@
 package com.isil.android.pa3.data.repository
 
+import com.isil.android.pa3.data.datasource.local.TokenGenerator
 import com.isil.android.pa3.data.datasource.local.TokenManager
 import com.isil.android.pa3.data.datasource.remote.ApiService
-import com.isil.android.pa3.data.model.LoginRequest
 import com.isil.android.pa3.data.model.toDomain
 import com.isil.android.pa3.data.model.toStoredSession
 import com.isil.android.pa3.domain.model.Session
@@ -17,16 +17,20 @@ class AuthRepositoryImpl(
     private val tokenManager: TokenManager
 ) : AuthRepository {
     override suspend fun login(username: String, password: String): Result<Session> = try {
-        val response = apiService.login(LoginRequest(username, password))
-        val stored = response.toStoredSession(fallbackUsername = username)
-        tokenManager.saveSession(stored)
-        Result.success(stored.toDomain())
-    } catch (e: HttpException) {
-        val message = when (e.code()) {
-            400, 401 -> "Usuario o contraseña incorrectos"
-            else -> "Error del servidor (${e.code()})"
+        val empleado = apiService.getEmpleados()
+            .firstOrNull { it.usuario.equals(username, ignoreCase = true) && it.clave == password }
+
+        when {
+            empleado == null -> Result.failure(Exception("Usuario o contraseña incorrectos"))
+            empleado.estado == false -> Result.failure(Exception("El usuario se encuentra inactivo"))
+            else -> {
+                val stored = empleado.toStoredSession(TokenGenerator.generate(empleado))
+                tokenManager.saveSession(stored)
+                Result.success(stored.toDomain())
+            }
         }
-        Result.failure(Exception(message))
+    } catch (e: HttpException) {
+        Result.failure(Exception("Error del servidor (${e.code()})"))
     } catch (e: IOException) {
         Result.failure(Exception("No se pudo conectar con el servidor"))
     }

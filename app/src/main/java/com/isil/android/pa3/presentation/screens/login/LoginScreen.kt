@@ -24,7 +24,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ErrorOutline
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Person
-import androidx.compose.material.icons.rounded.School
+import androidx.compose.material.icons.rounded.DirectionsCar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -40,7 +40,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -92,15 +91,15 @@ fun LoginScreen(
                         .background(Brush.linearGradient(listOf(IOSColors.Cyan, IOSColors.Blue, IOSColors.Indigo))),
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(Icons.Rounded.School, contentDescription = null, tint = Color.White, modifier = Modifier.size(44.dp))
+                    Icon(Icons.Rounded.DirectionsCar, contentDescription = null, tint = Color.White, modifier = Modifier.size(44.dp))
                 }
             }
 
             Spacer(Modifier.height(22.dp))
-            Text("Gestión de Cursos", style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.onBackground)
+            Text("Rápidos y Furiosos", style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.onBackground)
             Spacer(Modifier.height(6.dp))
             Text(
-                "Inicia sesión para continuar",
+                "Inicia sesión con tu usuario de empleado",
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -153,13 +152,6 @@ fun LoginScreen(
                 )
             }
 
-            Spacer(Modifier.height(18.dp))
-            Text(
-                "Usuario de prueba: emilys · Contraseña: emilyspass",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                textAlign = TextAlign.Center
-            )
             Spacer(Modifier.height(32.dp))
         }
     }
