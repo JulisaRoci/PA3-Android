@@ -12,8 +12,12 @@ object Routes {
     const val MAIN = "main"
 
     const val HOME = "home"
-    const val ENTIDAD = "entidad"
+    const val GESTION = "gestion"
+    const val MODULO = "modulo/{modulo}"
+
     const val AJUSTES = "ajustes"
+
+    fun modulo(nombre: String) = "modulo/$nombre"
 }
 
 @Composable

@@ -26,7 +26,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ContentCopy
 import androidx.compose.material.icons.rounded.Key
 import androidx.compose.material.icons.rounded.Numbers
-import androidx.compose.material.icons.rounded.VerifiedUser
+import androidx.compose.material.icons.rounded.Dns
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -152,10 +152,10 @@ fun HomeScreen(viewModel: HomeViewModel = viewModel(factory = AppViewModelProvid
 
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             InfoTile(
-                icon = Icons.Rounded.VerifiedUser,
+                icon = Icons.Rounded.Dns,
                 color = IOSColors.Green,
-                title = "Estado",
-                value = "Autenticado",
+                title = "Servidor",
+                value = "Rápidos y Furiosos",
                 modifier = Modifier.weight(1f)
             )
             InfoTile(

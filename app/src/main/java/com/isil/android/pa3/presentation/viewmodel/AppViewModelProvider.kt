@@ -5,6 +5,9 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.isil.android.pa3.PA3Application
+import com.isil.android.pa3.di.AppContainer
+import com.isil.android.pa3.domain.model.Entidad
+import com.isil.android.pa3.domain.usecase.CrudUseCases
 
 object AppViewModelProvider {
     val Factory: ViewModelProvider.Factory = viewModelFactory {
@@ -16,15 +19,14 @@ object AppViewModelProvider {
         }
         initializer {
             val c = app().container
-            ProductoViewModel(
-                c.getProductosUseCase,
-                c.getProductoUseCase,
-                c.crearProductoUseCase,
-                c.actualizarProductoUseCase,
-                c.eliminarProductoUseCase
-            )
+            OpcionesViewModel(c.catalogos, c.clientes)
         }
     }
+
+    fun <T : Entidad> crud(casos: (AppContainer) -> CrudUseCases<T>): ViewModelProvider.Factory =
+        viewModelFactory {
+            initializer { CrudViewModel(casos(app().container)) }
+        }
 }
 
 private fun CreationExtras.app(): PA3Application =

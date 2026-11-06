@@ -99,7 +99,7 @@ fun LoginScreen(
             Text("Rápidos y Furiosos", style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.onBackground)
             Spacer(Modifier.height(6.dp))
             Text(
-                "Inicia sesión con tu usuario",
+                "Inicia sesión con tu usuario de empleado",
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

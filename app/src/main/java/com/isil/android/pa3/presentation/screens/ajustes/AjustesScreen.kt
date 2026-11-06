@@ -21,11 +21,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.rounded.Logout
 import androidx.compose.material.icons.rounded.Badge
+import androidx.compose.material.icons.rounded.Dns
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.material.icons.rounded.Palette
 import androidx.compose.material.icons.rounded.Person
-import androidx.compose.material.icons.rounded.DirectionsCar
+import androidx.compose.material.icons.rounded.PhoneAndroid
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -103,6 +104,8 @@ fun AjustesScreen(
             RowDivider()
             SettingsRow(Icons.Rounded.Badge, IOSColors.Orange, "Rol", value = session?.role.orEmpty(), showChevron = false)
             RowDivider()
+            SettingsRow(Icons.Rounded.Dns, IOSColors.Teal, "Servidor", value = "Rápidos y Furiosos", showChevron = false)
+            RowDivider()
             SettingsRow(Icons.Rounded.Notifications, IOSColors.Red, "Notificaciones", value = "Activadas")
             RowDivider()
             SettingsRow(Icons.Rounded.Palette, IOSColors.Indigo, "Apariencia", value = "Sistema")
@@ -110,7 +113,7 @@ fun AjustesScreen(
 
         SectionHeader("Información")
         SettingsGroup {
-            SettingsRow(Icons.Rounded.DirectionsCar, IOSColors.Green, "Aplicación", value = "Rápidos y Furiosos", showChevron = false)
+            SettingsRow(Icons.Rounded.PhoneAndroid, IOSColors.Green, "Aplicación", value = "Grupo1PA3", showChevron = false)
             RowDivider()
             SettingsRow(Icons.Rounded.Info, IOSColors.Gray, "Versión", value = "1.0", showChevron = false)
         }

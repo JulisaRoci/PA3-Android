@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- La API propia corre en local por HTTP (sin HTTPS): se permite tráfico sin cifrar -->
 <network-security-config>
-    <base-config cleartextTrafficPermitted="true" />
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">132.145.170.171</domain>
+    </domain-config>
 </network-security-config>
