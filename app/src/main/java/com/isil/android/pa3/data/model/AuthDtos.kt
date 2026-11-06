@@ -3,23 +3,34 @@ package com.isil.android.pa3.data.model
 import com.google.gson.annotations.SerializedName
 import com.isil.android.pa3.domain.model.Session
 
-data class RolDto(
-    @SerializedName("codigo") val codigo: Long?,
-    @SerializedName("nombre") val nombre: String?
+// Cuerpo que se envía a POST api/auth/login
+data class LoginRequest(
+    @SerializedName("usuario") val usuario: String,
+    @SerializedName("clave") val clave: String
 )
 
-data class EmpleadoDto(
+// Respuesta del login: token generado por la API + datos del usuario
+data class LoginResponse(
+    @SerializedName("token") val token: String,
+    @SerializedName("usuario") val usuario: UsuarioDto
+)
+
+data class UsuarioDto(
     @SerializedName("codigo") val codigo: Long?,
-    @SerializedName("nombre") val nombre: String?,
-    @SerializedName("apellidopaterno") val apellidoPaterno: String?,
-    @SerializedName("apellidomaterno") val apellidoMaterno: String?,
-    @SerializedName("correo") val correo: String?,
     @SerializedName("usuario") val usuario: String?,
-    @SerializedName("clave") val clave: String?,
-    @SerializedName("estado") val estado: Boolean?,
-    @SerializedName("rol") val rol: RolDto?
+    @SerializedName("nombre") val nombre: String?,
+    @SerializedName("apellido") val apellido: String?,
+    @SerializedName("correo") val correo: String?,
+    @SerializedName("rol") val rol: String?,
+    @SerializedName("estado") val estado: Boolean?
 )
 
+// Error que devuelve la API: { "mensaje": "..." }
+data class ApiErrorDto(
+    @SerializedName("mensaje") val mensaje: String?
+)
+
+// Sesión que se guarda en el TokenManager (DataStore)
 data class StoredSession(
     val token: String,
     val username: String,
@@ -28,18 +39,18 @@ data class StoredSession(
     val role: String
 )
 
-fun EmpleadoDto.fullName(): String =
-    listOfNotNull(nombre, apellidoPaterno, apellidoMaterno)
+fun UsuarioDto.fullName(): String =
+    listOfNotNull(nombre, apellido)
         .filter { it.isNotBlank() }
         .joinToString(" ")
         .ifBlank { usuario.orEmpty() }
 
-fun EmpleadoDto.toStoredSession(token: String) = StoredSession(
+fun LoginResponse.toStoredSession() = StoredSession(
     token = token,
-    username = usuario.orEmpty(),
-    fullName = fullName(),
-    email = correo.orEmpty(),
-    role = rol?.nombre.orEmpty()
+    username = usuario.usuario.orEmpty(),
+    fullName = usuario.fullName(),
+    email = usuario.correo.orEmpty(),
+    role = usuario.rol.orEmpty()
 )
 
 fun StoredSession.toDomain() = Session(

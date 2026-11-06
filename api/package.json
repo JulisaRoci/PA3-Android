@@ -1,0 +1,13 @@
+{
+  "name": "grupo1-pa3-api",
+  "version": "1.0.0",
+  "description": "API REST propia del Grupo 1 (PA3 Android): login con token JWT y CRUD de productos",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
