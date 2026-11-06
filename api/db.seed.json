@@ -1,0 +1,19 @@
+{
+  "usuarios": [
+    {
+      "codigo": 1,
+      "usuario": "admin",
+      "clave": "admin123",
+      "nombre": "Administrador",
+      "apellido": "Grupo 1",
+      "correo": "admin@grupo1.pe",
+      "rol": "Administrador",
+      "estado": true
+    }
+  ],
+  "productos": [
+    { "codigo": 1, "nombre": "Laptop Lenovo IdeaPad 3", "categoria": "Computo", "precio": 2199.9, "stock": 8 },
+    { "codigo": 2, "nombre": "Mouse inalambrico Logitech M185", "categoria": "Accesorios", "precio": 59.9, "stock": 40 },
+    { "codigo": 3, "nombre": "Monitor Samsung 24\"", "categoria": "Computo", "precio": 549.0, "stock": 12 }
+  ]
+}

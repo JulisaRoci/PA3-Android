@@ -14,6 +14,16 @@ object AppViewModelProvider {
         initializer {
             AjustesViewModel(app().container.getSessionUseCase, app().container.logoutUseCase)
         }
+        initializer {
+            val c = app().container
+            ProductoViewModel(
+                c.getProductosUseCase,
+                c.getProductoUseCase,
+                c.crearProductoUseCase,
+                c.actualizarProductoUseCase,
+                c.eliminarProductoUseCase
+            )
+        }
     }
 }
 
